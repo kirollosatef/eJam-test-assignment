@@ -20,20 +20,21 @@ export class SuperheroService {
 
   findAll(paginationDto: PaginationDto): PaginatedResponseDto<Superhero> {
     const { page = 1, limit = 5 } = paginationDto;
-    console.log('🚀 ~ SuperheroService ~ findAll ~ limit:', limit);
-    console.log('🚀 ~ SuperheroService ~ findAll ~ page:', page);
+    // console.log('🚀 ~ SuperheroService ~ findAll ~ limit:', limit);
+    // console.log('🚀 ~ SuperheroService ~ findAll ~ page:', page);
 
     //! sort by score
     const sortedHeroes = [...this.superheroes].sort(
       (a, b) => b.humilityScore - a.humilityScore,
     );
 
-    const startIndex = (page - 1) * limit;
-    const endIndex = startIndex + limit;
-    const total = sortedHeroes.length;
-    const lastPage = Math.ceil(total / limit);
+    const startIndex: number = (page - 1) * limit;
+    const endIndex: number = startIndex + limit;
+    const total: number = sortedHeroes.length;
+    const lastPage: number = Math.ceil(total / limit);
 
     const data = sortedHeroes.slice(startIndex, endIndex);
+    // console.log("🚀 ~ SuperheroService ~ findAll ~ data:", data)
 
     return {
       data,

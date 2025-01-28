@@ -29,7 +29,7 @@ A NestJS-based API that celebrates the extraordinary qualities of everyday team 
 
 ```bash
 git clone <repository-url>
-cd humble-superhero-api
+cd eJam-test-assignment
 ```
 
 2. Install dependencies:

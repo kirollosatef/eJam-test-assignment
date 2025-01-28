@@ -1,7 +1,9 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Query } from '@nestjs/common';
 import { SuperheroService } from './superhero.service';
 import { CreateSuperheroDto } from './dto/create-superhero.dto';
+import { PaginationDto } from './dto/pagination.dto';
 import { Superhero } from './superhero.interface';
+import { PaginatedResponseDto } from './dto/paginated-response.dto';
 
 @Controller('superheroes')
 export class SuperheroController {
@@ -13,7 +15,9 @@ export class SuperheroController {
   }
 
   @Get()
-  findAll(): Superhero[] {
-    return this.superheroService.findAll();
+  findAll(
+    @Query() paginationDto: PaginationDto,
+  ): PaginatedResponseDto<Superhero> {
+    return this.superheroService.findAll(paginationDto);
   }
 }

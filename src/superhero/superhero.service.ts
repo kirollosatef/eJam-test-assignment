@@ -19,7 +19,9 @@ export class SuperheroService {
   }
 
   findAll(paginationDto: PaginationDto): PaginatedResponseDto<Superhero> {
-    const { page = 1, limit = 5 } = paginationDto;
+    const { page = 1, limit = 5 }: PaginationDto = paginationDto;
+    // const page: number = paginationDto.page || 1;
+    // const limit: number = paginationDto.limit || 5;
     // console.log('🚀 ~ SuperheroService ~ findAll ~ limit:', limit);
     // console.log('🚀 ~ SuperheroService ~ findAll ~ page:', page);
 
@@ -40,9 +42,9 @@ export class SuperheroService {
       data,
       meta: {
         total,
-        page,
+        page: Number(page),
         lastPage,
-        limit,
+        limit: Number(limit),
       },
     };
   }
